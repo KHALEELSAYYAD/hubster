@@ -7,11 +7,15 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.hubster.config.CommonContants;
 import com.hubster.dao.TodoDaoImpl;
 import com.hubster.model.TodoModel;
+import com.hubster.request.LexRequest;
 import com.hubster.request.Request;
+import com.hubster.response.DialogAction;
+import com.hubster.response.LexResponse;
+import com.hubster.response.Message;
 import com.hubster.response.Response;
 
 
-public class TodoHandler implements RequestHandler<Request, Response> {
+public class TodoHandler implements RequestHandler<Request, LexResponse> {
 
 	private final TodoDaoImpl todoService = TodoDaoImpl.instance;
 
@@ -20,7 +24,7 @@ public class TodoHandler implements RequestHandler<Request, Response> {
 	}
 
 	@Override
-	public Response handleRequest(Request input, Context context) {
+	public LexResponse handleRequest(Request input, Context context) {
 
 		List<TodoModel> list = todoService.getAllTodos(input);
 		Response res = getResponse();
@@ -33,8 +37,14 @@ public class TodoHandler implements RequestHandler<Request, Response> {
 			res.setResCode(CommonContants.FAIL_CODE);
 			res.setResDesc(CommonContants.FAIL_DESC);
 		}
+		
 
-		return res;
+	    Message message = new Message("PlainText",list.toString());
+	    DialogAction dialogueAction = new DialogAction("Close", "Fulfilled or Failed", message );
+		
+		
+
+		return new LexResponse(dialogueAction);
 	}
 
 }
