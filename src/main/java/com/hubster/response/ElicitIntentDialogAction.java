@@ -16,20 +16,33 @@
 
 package com.hubster.response;
 
+import com.hubster.request.Message;
+import com.hubster.request.ResponseCard;
+
 /**
- * A Dialog Action
+ * The Elicit Intent Dialog Action
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public class ElicitIntentDialogAction extends DialogActionWithDetails {
 
-    private final String type;
-
-    public DialogAction(String type) {
-        this.type = type;
+    public ElicitIntentDialogAction() {
+        super("ElicitIntent");
     }
 
-    public String getType() {
-        return type;
+    public ElicitIntentDialogAction(Message message) {
+        this();
+        setMessage(message);
     }
+
+    public ElicitIntentDialogAction(Message message, ResponseCard responseCard) {
+        this(message);
+        setResponseCard(responseCard);
+    }
+
+    public ElicitIntentDialogAction(ResponseCard responseCard) {
+        this();
+        setResponseCard(responseCard);
+    }
+
 }

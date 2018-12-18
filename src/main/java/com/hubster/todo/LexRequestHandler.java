@@ -14,22 +14,27 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.todo;
+
+import java.util.Map;
+
+import com.hubster.request.LexRequest;
+import com.hubster.request.LexResponse;
 
 /**
- * A Dialog Action
+ * An interface for a handler which processes a Lex request
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public interface LexRequestHandler {
 
-    private final String type;
+    /**
+     * Handles the given request from Lex and returns a response
+     *
+     * @param lexRequest The Lex Request
+     * @param sessionAttributes A modifiable list of session attributes that will be populated into the Lex Response
+     * @return The Lex Response
+     */
+    LexResponse handleRequest(LexRequest lexRequest, Map<String,String> sessionAttributes);
 
-    public DialogAction(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

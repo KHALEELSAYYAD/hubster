@@ -14,22 +14,16 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * An enumeration of Fulfillment States
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public enum FulfillmentState {
 
-    private final String type;
+    Fulfilled,
+    Failed
 
-    public DialogAction(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

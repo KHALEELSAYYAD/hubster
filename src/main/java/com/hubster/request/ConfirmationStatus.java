@@ -14,22 +14,17 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * An enumeration of Confirmation Statuses
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public enum ConfirmationStatus {
 
-    private final String type;
+    None,
+    Confirmed,
+    Denied
 
-    public DialogAction(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

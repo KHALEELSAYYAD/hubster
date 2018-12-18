@@ -14,22 +14,16 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * An enumeration of Output Dialog Modes
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public enum OutputDialogMode {
 
-    private final String type;
+    Text,
+    Voice
 
-    public DialogAction(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

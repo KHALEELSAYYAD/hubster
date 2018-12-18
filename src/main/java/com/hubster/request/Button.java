@@ -14,22 +14,34 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * A Button for a Response Card
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public class Button {
 
-    private final String type;
+    private String text;
+    private String value;
 
-    public DialogAction(String type) {
-        this.type = type;
+    public Button(String text, String value) {
+        if (text == null) {
+            throw new IllegalArgumentException("Text should not be null");
+        }
+        if (value == null) {
+            throw new IllegalArgumentException("Value should not be null");
+        }
+        this.text = text;
+        this.value = value;
     }
 
-    public String getType() {
-        return type;
+    public String getText() {
+        return text;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

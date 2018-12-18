@@ -16,20 +16,37 @@
 
 package com.hubster.response;
 
+import com.hubster.request.Message;
+import com.hubster.request.ResponseCard;
+
 /**
- * A Dialog Action
+ * An abstract Dialog Action with a Response Card and Message
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public abstract class DialogActionWithDetails extends DialogAction {
 
-    private final String type;
+    private Message message;
+    private ResponseCard responseCard;
 
-    public DialogAction(String type) {
-        this.type = type;
+    public DialogActionWithDetails(String type) {
+        super(type);
     }
 
-    public String getType() {
-        return type;
+    public Message getMessage() {
+        return message;
     }
+
+    public void setMessage(com.hubster.request.Message message2) {
+        this.message = message2;
+    }
+
+    public ResponseCard getResponseCard() {
+        return responseCard;
+    }
+
+    public void setResponseCard(ResponseCard responseCard) {
+        this.responseCard = responseCard;
+    }
+
 }

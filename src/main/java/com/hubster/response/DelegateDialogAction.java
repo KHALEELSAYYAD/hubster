@@ -16,20 +16,27 @@
 
 package com.hubster.response;
 
+import java.util.Collections;
+import java.util.Map;
+
 /**
- * A Dialog Action
+ * The Delegate Dialog Action
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public class DelegateDialogAction extends DialogAction {
 
-    private final String type;
+    private final Map<String,String> slots;
 
-    public DialogAction(String type) {
-        this.type = type;
+    public DelegateDialogAction(Map<String,String> slots) {
+        super("Delegate");
+        if (slots == null) {
+            throw new IllegalArgumentException("Slots should not be null");
+        }
+        this.slots = slots;
     }
 
-    public String getType() {
-        return type;
+    public Map<String, String> getSlots() {
+        return Collections.unmodifiableMap(slots);
     }
 }

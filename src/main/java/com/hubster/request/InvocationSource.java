@@ -14,22 +14,16 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * An enumeration of Invocation Sources
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public enum InvocationSource {
 
-    private final String type;
+    FulfillmentCodeHook,
+    DialogCodeHook
 
-    public DialogAction(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

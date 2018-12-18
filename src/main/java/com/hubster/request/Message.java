@@ -14,22 +14,35 @@
  *    limitations under the License.
  */
 
-package com.hubster.response;
+package com.hubster.request;
 
 /**
- * A Dialog Action
+ * A Response Message
  *
  * @author Mark Borner
  */
-public abstract class DialogAction {
+public class Message {
 
-    private final String type;
+    private String contentType;
+    private String content;
 
-    public DialogAction(String type) {
-        this.type = type;
+    public Message(String content) {
+        if (content == null) {
+            throw new IllegalArgumentException("Content should not be null");
+        }
+        this.content = content;
+        if (content.startsWith("<speak>")) {
+            contentType = "SSML";
+        } else {
+            contentType = "PlainText";
+        }
     }
 
-    public String getType() {
-        return type;
+    public String getContentType() {
+        return contentType;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
