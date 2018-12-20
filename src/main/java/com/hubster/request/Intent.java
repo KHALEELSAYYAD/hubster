@@ -44,4 +44,11 @@ public class Intent {
     public Map<String, String> getSlots() {
         return Collections.unmodifiableMap(slots);
     }
+
+	@Override
+	public String toString() {
+		return "Intent [name=" + name + ", slots=" + slots + "]";
+	}
+    
+    
 }

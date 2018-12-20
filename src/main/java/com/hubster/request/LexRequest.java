@@ -104,4 +104,12 @@ public class LexRequest {
         return sessionAttributes.get(key);
     }
 
+	@Override
+	public String toString() {
+		return "LexRequest [intent=" + intent + ", bot=" + bot + ", userId=" + userId + ", inputTranscript="
+				+ inputTranscript + ", invocationSource=" + invocationSource + ", outputDialogMode=" + outputDialogMode
+				+ ", messageVersion=" + messageVersion + ", sessionAttributes=" + sessionAttributes + "]";
+	}
+    
+
 }

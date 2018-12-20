@@ -1,8 +1,10 @@
 package com.hubster.todo;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.amazonaws.services.lambda.runtime.Context;
 import com.hubster.dao.TodoDaoImpl;
 import com.hubster.model.TodoModel;
 import com.hubster.request.FulfillmentState;
@@ -84,6 +86,25 @@ public class TodoHandler extends AbstractLexRequestHandler {
 	  return createCloseDialogActionResponse(failed, "Hello " + str);
 	   
   }
+
+@Override
+public LexResponse handleRequest(LexRequest lexRequest, Context context) {
+	Map<String, String> sessionAttributes=new HashMap<String, String>();
+	context.getLogger().log("=======XXXXXXXX========="+lexRequest.toString());
+	  try {
+          if ("gettodo".equals(lexRequest.getIntent().getName())) {
+              return getAllTodos(lexRequest,sessionAttributes);
+          } else if ("HelloIntent".equals(lexRequest.getIntent().getName())) {
+              return processTodo(lexRequest,sessionAttributes);
+          } else if ("GoodbyeIntent".equals(lexRequest.getIntent().getName())) {
+              return deleteTodo(lexRequest,sessionAttributes);
+          } else {
+              return createElicitIntentDialogActionResponse();
+          }
+      } catch (Exception e) {
+          return getMessage("Sorry, I'm having a problem fulfilling your request.  Please try again later.",FulfillmentState.Failed);
+      }
+}
 
 
 }

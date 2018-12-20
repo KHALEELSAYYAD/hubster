@@ -18,6 +18,7 @@ package com.hubster.todo;
 
 import java.util.Map;
 
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.hubster.request.LexRequest;
 import com.hubster.request.LexResponse;
 
@@ -26,7 +27,7 @@ import com.hubster.request.LexResponse;
  *
  * @author Mark Borner
  */
-public interface LexRequestHandler {
+public interface LexRequestHandler extends RequestHandler<LexRequest, LexResponse>{
 
     /**
      * Handles the given request from Lex and returns a response
